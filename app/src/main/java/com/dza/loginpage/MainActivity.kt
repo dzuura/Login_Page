@@ -1,31 +1,24 @@
 package com.dza.loginpage
 
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.dza.loginpage.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var usernameEditText: EditText
-    private lateinit var passwordEditText: EditText
-    private lateinit var loginButton: Button
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        // Inisialisasi UI elements
-        usernameEditText = findViewById(R.id.usernameEditText)
-        passwordEditText = findViewById(R.id.passwordEditText)
-        loginButton = findViewById(R.id.loginButton)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         // Set OnClickListener untuk tombol login
-        loginButton.setOnClickListener {
+        binding.loginButton.setOnClickListener {
             // Ambil input dari EditText
-            val username = usernameEditText.text.toString()
-            val password = passwordEditText.text.toString()
+            val username = binding.usernameEditText.text.toString()
+            val password = binding.passwordEditText.text.toString()
 
             // Tampilkan Toast dengan username
             if (username.isNotEmpty() && password.isNotEmpty()) {
